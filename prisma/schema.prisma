@@ -16,8 +16,23 @@ model Pokemon {
   id        Int  @id @default(autoincrement())
   name      String  @unique
   height    Int?
-
   images    Image[]
+  types     PokemonsOnTypes[]
+}
+
+model Type {
+    id          Int @id @default(autoincrement())
+    name        String @unique
+    pokemons    PokemonsOnTypes[]
+}
+
+model PokemonsOnTypes {
+    pokemon         Pokemon @relation(fields: [pokemonId], references: [id])
+    pokemonId       Int
+    type            Type @relation(fields: [typeId], references: [id])
+    typeId          Int
+
+    @@id([pokemonId, typeId])
 }
 
 model Image {
@@ -26,3 +41,4 @@ model Image {
   pokemonId     Int
   url           String
 }
+

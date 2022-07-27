@@ -12,8 +12,10 @@ export class Pokemon implements Prisma.PokemonUncheckedCreateInput {}
  */
 
 export class Pokemon implements Prisma.PokemonUncheckedCreateInput {
-  id?: number;
+  id: number;
   name: string;
-  height?: number;
-  images?: Prisma.ImageUncheckedCreateNestedManyWithoutPokemonInput;
+  height: number | null;
+  images: Prisma.ImageUncheckedCreateNestedManyWithoutPokemonInput;
+  types: Prisma.PokemonsOnTypesUncheckedCreateNestedManyWithoutPokemonInput;
+
 }

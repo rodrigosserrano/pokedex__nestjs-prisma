@@ -12,7 +12,12 @@ export class PokemonService {
   private readonly _include = {
     images: {
       select: {
-        url: true,
+        url:true,
+      }
+    },
+    types: {
+      select: {
+        type: true
       },
     },
   };
@@ -25,7 +30,7 @@ export class PokemonService {
   }
 
   findAll() {
-    return this.prisma.pokemon.findMany({ include: this._include });
+    return this.prisma.pokemon.findMany({  include: this._include })
   }
 
   findOne(id: number) {
